@@ -8,8 +8,6 @@
 
     public static partial class ConfigurationExtensions
     {
-        private const string IdentityDbSettings = nameof(IdentityDbSettings);
-
         public static IServiceCollection AddMongoDatabase(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<MongoDbSettings>(option => configuration.GetSection(nameof(MongoDbSettings)).Bind(option));
@@ -17,7 +15,7 @@
             services.AddSingleton<IMongoClient>(context =>
             {
                 var options = context.GetService<IOptions<MongoDbSettings>>();
-                
+
                 return new MongoClient(options.Value.ConnectionString);
             });
 
@@ -31,7 +29,6 @@
 
             services.AddTransient<IMongoDbSeeder, MongoDbSeeder>();
             services.AddTransient<IMongoDbInitializer, MongoDbInitializer>();
-
             services.AddScoped(c => c.GetService<IMongoClient>().StartSession());
 
             return services;

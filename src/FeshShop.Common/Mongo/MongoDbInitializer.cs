@@ -43,6 +43,7 @@
         {
             BsonSerializer.RegisterSerializer(typeof(decimal), new DecimalSerializer(BsonType.Decimal128));
             BsonSerializer.RegisterSerializer(typeof(decimal?), new NullableSerializer<decimal>(new DecimalSerializer(BsonType.Decimal128)));
+            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
             ConventionRegistry.Register("Conventions", new MongoDbConventions(), x => true);
         }
 
