@@ -10,4 +10,4 @@ case "$TRAVIS_BRANCH" in
     ;;    
 esac
 
-dotnet build -c $CONFIGURATION --no-cache
+dotnet build -c "$CONFIGURATION" --no-cache
