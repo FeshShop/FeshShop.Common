@@ -1,13 +1,13 @@
 #!/bin/bash
-CONFIGURATION = ""
+CONFIGURATION=""
 
 case "$TRAVIS_BRANCH" in
   "main")
-    CONFIGURATION = "Release"
+    CONFIGURATION="Release"
     ;;
   "dev")
-    CONFIGURATION = "Debug"
+    CONFIGURATION="Debug"
     ;;    
 esac
 
-dotnet build -c Release --no-cache
+dotnet build -c $CONFIGURATION --no-cache
