@@ -1,5 +1,6 @@
 ﻿namespace FeshShop.Common.Mvc
 {
+    using FeshShop.Common.Mediator.Types;
     using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Linq;
@@ -25,10 +26,29 @@
                 });
 
         public static IServiceCollection AddServices(this IServiceCollection services, Assembly assembly)
-            => services.Scan(scan => scan.FromAssemblies(assembly).AddClasses().AsMatchingInterface());
+        {
+            services.Scan(scan => scan.FromAssemblies(assembly).AddClasses().AsMatchingInterface());
+
+            services
+                .Scan(scan => scan.FromAssemblies(assembly)
+                    .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime());
+
+            services
+                .Scan(scan => scan.FromAssemblies(assembly)
+                    .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>)))
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime());
+
+            return services;
+        }
 
         public static T BindId<T>(this T model, Expression<Func<T, Guid>> expression)
             => model.Bind(expression, Guid.NewGuid());
+
+        public static T Bind<T>(this T model, Expression<Func<T, object>> expression, object value)
+            => model.Bind<T, object>(expression, value);
 
         private static TModel Bind<TModel, TProperty>(this TModel model, Expression<Func<TModel, TProperty>> expression,
             object value)
