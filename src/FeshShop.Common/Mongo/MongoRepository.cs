@@ -34,6 +34,8 @@
         public async Task<IQueryable<TEntity>> BrowseAsync(Expression<Func<TEntity, bool>> predicate)
             => await Task.FromResult(this.Collection.AsQueryable().Where(predicate));
 
+        public async Task DeleteAsync(Guid id) => await this.Collection.DeleteOneAsync(e => e.Id == id);
+
         private string GetCollectionName(Type documentType)
         {
             return ((BsonCollectionAttribute)documentType

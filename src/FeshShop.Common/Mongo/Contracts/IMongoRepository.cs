@@ -16,5 +16,7 @@
         Task UpdateAsync(TEntity entity);
 
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
+
+        Task DeleteAsync(Guid id);
     }
 }
