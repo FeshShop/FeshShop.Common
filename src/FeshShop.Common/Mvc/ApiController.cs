@@ -26,11 +26,9 @@
         }
 
         protected ActionResult<T> Single<T>(T data)
-        {
-            if (data == null)
-            {
+        {           
+            if (data is null) 
                 return this.NotFound();
-            }
 
             return this.Ok(data);
         }
