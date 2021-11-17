@@ -1,4 +1,4 @@
-﻿namespace FeshShop.Common.Logging
+﻿namespace FeshShop.Common.Logging.Settings
 {
     public class SerilogSettings
     {
