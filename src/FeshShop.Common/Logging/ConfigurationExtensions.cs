@@ -1,30 +1,32 @@
 ﻿namespace FeshShop.Common.Logging
 {
+    using FeshShop.Common.Logging.Abstraction;
+    using FeshShop.Common.Logging.Settings;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
     using Serilog;
     using Serilog.Events;
     using System;
 
     public static partial class ConfigurationExtensions
     {
+        public static IServiceCollection AddLogger(this IServiceCollection services)
+            => services.AddTransient<IMyLogger, MyLogger>();
+
         public static IWebHostBuilder UseLogging(this IWebHostBuilder webHostBuilder, string applicationName = null)
             => webHostBuilder.UseSerilog((context, loggerConfiguration) => 
             {
                 var serilogSettings = context
                     .Configuration
-                    .GetSection(nameof(SerilogSettings))
-                    .Get<SerilogSettings>();
+                    .GetOptions<SerilogSettings>();
 
                 var seqSettings = context
                     .Configuration
-                    .GetSection(nameof(SeqSettings))
-                    .Get<SeqSettings>();
+                    .GetOptions<SeqSettings>();
 
                 var appSettings = context
                     .Configuration
-                    .GetSection(nameof(AppSettings))
-                    .Get<AppSettings>();
+                    .GetOptions<AppSettings>();
 
                 if (!Enum.TryParse<LogEventLevel>(serilogSettings.Level, true, out var level))
                     level = LogEventLevel.Information;

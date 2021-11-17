@@ -13,9 +13,7 @@
     {
         public static IServiceCollection AddHealthChecker(this IServiceCollection services, IConfiguration configuration)
         {
-            var options = configuration
-                .GetSection(nameof(MongoDbSettings))
-                .Get<MongoDbSettings>();
+            var options = configuration.GetOptions<MongoDbSettings>();
 
             services
                 .AddHealthChecks()

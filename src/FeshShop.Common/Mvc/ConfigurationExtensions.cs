@@ -56,9 +56,7 @@
             var memberExpression = expression.Body as MemberExpression;
 
             if (memberExpression == null)
-            {
                 memberExpression = ((UnaryExpression)expression.Body).Operand as MemberExpression;
-            }
 
             var propertyName = memberExpression.Member.Name.ToLowerInvariant();
             var modelType = model.GetType();
@@ -66,9 +64,7 @@
                 .SingleOrDefault(x => x.Name.ToLowerInvariant().StartsWith($"<{propertyName}>"));
 
             if (field == null)
-            {
                 return model;
-            }
 
             field.SetValue(model, value);
 
