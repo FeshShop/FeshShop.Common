@@ -1,0 +1,24 @@
+version: 2.1
+
+jobs:
+  restore-and-build:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:3.1 
+    steps:
+      - checkout
+      - run:
+          name: Restore       
+          command: sh ./scripts/dotnet-restore.sh
+      - run:
+          name: Build       
+          command: sh ./scripts/dotnet-build.sh
+
+workflows:
+  sample:
+    jobs:
+      - restore-and-build:
+        filters:
+          branches:
+            only:
+              - main
+              - dev
