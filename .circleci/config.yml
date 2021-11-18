@@ -21,7 +21,7 @@ jobs:
       - checkout
       - run:
           name: Push to Nuget
-          command: sh ./scripts/dotnet-nuget-pack.sh
+          command: bash ./scripts/dotnet-nuget-pack.sh
 
 workflows:
   sample:
