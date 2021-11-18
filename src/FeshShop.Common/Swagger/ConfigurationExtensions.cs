@@ -8,16 +8,9 @@
     {
         public static IServiceCollection AddSwagger(this IServiceCollection services, IConfiguration configuration)
         {
-            var options = configuration
-                .GetSection(nameof(SwaggerSettings))
-                .Get<SwaggerSettings>();
+            var options = configuration.GetOptions<SwaggerSettings>();
 
-            if (!options.Enabled)
-            {
-                return services;
-            }
-
-            return services.AddSwaggerGen();
+            return !options.Enabled ? services : services.AddSwaggerGen();
         }
 
         public static IApplicationBuilder UseSwagger(this IApplicationBuilder builder)
@@ -25,13 +18,10 @@
             var options = builder
                 .ApplicationServices
                 .GetRequiredService<IConfiguration>()
-                .GetSection(nameof(SwaggerSettings))
-                .Get<SwaggerSettings>();
+                .GetOptions<SwaggerSettings>();
 
             if (!options.Enabled)
-            {
                 return builder;
-            }
 
             builder.UseSwagger(c => c.RouteTemplate = "swagger/{documentName}/swagger.json");
 
