@@ -1,7 +1,7 @@
 #!/bin/bash
 CONFIGURATION=""
 
-case "$TRAVIS_BRANCH" in
+case "$CIRCLE_BRANCH" in
   "main")
     CONFIGURATION="Release"
     ;;
