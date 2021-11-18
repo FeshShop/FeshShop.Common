@@ -12,13 +12,27 @@ jobs:
       - run:
           name: Build       
           command: sh ./scripts/dotnet-build.sh
+  deploy-to-nuget:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:3.1
+    steps:
+      - run:
+          name: Push to Nuget
+          command: sh ./scripts/dotnet-nuget-pack.sh
 
 workflows:
   sample:
     jobs:
       - restore-and-build:
-        filters:
-          branches:
-            only:
-              - main
-              - dev
+          filters:
+            branches:
+              only:
+                - main
+                - dev
+      - deploy-to-nuget:
+          requires:
+            - restore-and-build
+          filters:
+            branches:
+              only:
+                - main
