@@ -1,9 +1,12 @@
+defaults: &docker
+  docker:
+    - image: mcr.microsoft.com/dotnet/sdk:3.1
+
 version: 2.1
 
 jobs:
   restore-and-build:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:3.1 
+    <<: *docker
     steps:
       - checkout
       - run:
@@ -13,9 +16,9 @@ jobs:
           name: Build       
           command: sh ./scripts/dotnet-build.sh
   deploy-to-nuget:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:3.1
+    <<: *docker
     steps:
+      - checkout
       - run:
           name: Push to Nuget
           command: sh ./scripts/dotnet-nuget-pack.sh
