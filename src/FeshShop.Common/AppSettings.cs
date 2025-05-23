@@ -1,7 +1,6 @@
-﻿namespace FeshShop.Common
+﻿namespace FeshShop.Common;
+
+public class AppSettings
 {
-    public class AppSettings
-    {
-        public string Name { get; set; }
-    }
+    public string Name { get; set; }
 }

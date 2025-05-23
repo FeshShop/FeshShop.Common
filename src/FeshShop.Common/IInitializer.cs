@@ -1,9 +1,8 @@
-﻿namespace FeshShop.Common
-{
-    using System.Threading.Tasks;
+﻿namespace FeshShop.Common;
 
-    public interface IInitializer
-    {
-        Task InitializeAsync();
-    }
+using System.Threading.Tasks;
+
+public interface IInitializer
+{
+    Task InitializeAsync();
 }

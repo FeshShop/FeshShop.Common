@@ -1,7 +1,6 @@
-﻿namespace FeshShop.Common
+﻿namespace FeshShop.Common;
+
+public interface IStartupInitializer : IInitializer
 {
-    public interface IStartupInitializer : IInitializer
-    {
-        void AddInitializer(IInitializer initializer);
-    }
+    void AddInitializer(IInitializer initializer);
 }
