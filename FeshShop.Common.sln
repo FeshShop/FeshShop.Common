@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeshShop.Common.Guard", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeshShop.Common.Mongo", "src\FeshShop.Common.Mongo\FeshShop.Common.Mongo.csproj", "{74BC9ED5-8900-4B95-B2CB-76164AC1F6CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeshShop.Common.HealthChecks", "src\FeshShop.Common.HealthChecks\FeshShop.Common.HealthChecks.csproj", "{59EDDA57-CAD6-4F4F-AA59-739C5EB0AC0A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeshShop.Common.Logging", "src\FeshShop.Common.Logging\FeshShop.Common.Logging.csproj", "{1DD4550A-E26E-42AB-8155-DA7E138F24AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeshShop.Common.Mediator", "src\FeshShop.Common.Mediator\FeshShop.Common.Mediator.csproj", "{37FF28A6-4321-4FB8-8FA9-E7250F61E574}"
@@ -45,10 +43,6 @@ Global
 		{74BC9ED5-8900-4B95-B2CB-76164AC1F6CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74BC9ED5-8900-4B95-B2CB-76164AC1F6CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74BC9ED5-8900-4B95-B2CB-76164AC1F6CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59EDDA57-CAD6-4F4F-AA59-739C5EB0AC0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59EDDA57-CAD6-4F4F-AA59-739C5EB0AC0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59EDDA57-CAD6-4F4F-AA59-739C5EB0AC0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59EDDA57-CAD6-4F4F-AA59-739C5EB0AC0A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1DD4550A-E26E-42AB-8155-DA7E138F24AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1DD4550A-E26E-42AB-8155-DA7E138F24AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DD4550A-E26E-42AB-8155-DA7E138F24AF}.Release|Any CPU.ActiveCfg = Release|Any CPU

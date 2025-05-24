@@ -1,4 +1,9 @@
-﻿namespace FeshShop.Common.Mongo;
+﻿using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Routing;
+
+namespace FeshShop.Common.Mongo;
 
 using Contracts;
 using Microsoft.Extensions.Configuration;
@@ -33,5 +38,26 @@ public static class ConfigurationExtensions
             .AddScoped(c => c.GetService<IMongoClient>().StartSession());
 
         return services;
+    }
+    
+    public static IServiceCollection AddHealthChecker(this IServiceCollection services, IConfiguration configuration)
+    {
+        var options = configuration
+            .GetSection(nameof(MongoDbSettings))
+            .Get<MongoDbSettings>();
+
+        services
+            .AddHealthChecks()
+            .AddMongoDb();
+
+        return services;
+    }
+    
+    public static void MapHealthCheckPath(this IEndpointRouteBuilder endpoints)
+    {
+        endpoints.MapHealthChecks("/health", new HealthCheckOptions
+        {
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
     }
 }

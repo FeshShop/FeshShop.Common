@@ -12,8 +12,4 @@
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.1.2" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\FeshShop.Common\FeshShop.Common.csproj" />
-    </ItemGroup>
-
 </Project>

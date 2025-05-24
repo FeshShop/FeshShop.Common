@@ -4,7 +4,7 @@ using Contracts.Query;
 using System;
 using System.Threading.Tasks;
 
-public class QueryMediator(IServiceProvider serviceProvider) : IQueryMediator
+internal class QueryMediator(IServiceProvider serviceProvider) : IQueryMediator
 {
     public async Task<TResult> QueryAsync<TResult>(IQuery<TResult> query)
     {

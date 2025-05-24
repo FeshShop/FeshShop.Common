@@ -7,14 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="9.0.0" />
+      <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.5" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.5" />
       <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.5" />
+      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.5" />
       <PackageReference Include="MongoDB.Driver" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\FeshShop.Common\FeshShop.Common.csproj" />
+      <ProjectReference Include="..\FeshShop.Common.Mvc\FeshShop.Common.Mvc.csproj" />
+        <ProjectReference Include="..\FeshShop.Common.Types\FeshShop.Common.Types.csproj" />
     </ItemGroup>
 
 </Project>

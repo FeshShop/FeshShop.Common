@@ -8,10 +8,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FeshShop.Common.Mediator\FeshShop.Common.Mediator.csproj" />
-      <ProjectReference Include="..\FeshShop.Common\FeshShop.Common.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
       <PackageReference Include="Scrutor" Version="6.0.1" />
     </ItemGroup>
 

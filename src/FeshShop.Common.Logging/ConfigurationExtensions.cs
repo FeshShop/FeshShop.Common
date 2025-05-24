@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace FeshShop.Common.Logging;
 
@@ -19,15 +20,18 @@ public static class ConfigurationExtensions
         {
             var serilogSettings = context
                 .Configuration
-                .GetOptions<SerilogSettings>();
+                .GetSection(nameof(SerilogSettings))
+                .Get<SerilogSettings>();
 
             var seqSettings = context
                 .Configuration
-                .GetOptions<SeqSettings>();
+                .GetSection(nameof(SeqSettings))
+                .Get<SeqSettings>();
 
             var appSettings = context
                 .Configuration
-                .GetOptions<AppSettings>();
+                .GetSection(nameof(AppSettings))
+                .Get<AppSettings>();
 
             if (!Enum.TryParse<LogEventLevel>(serilogSettings.Level, true, out var level))
                 level = LogEventLevel.Information;

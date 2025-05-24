@@ -8,7 +8,9 @@
     {
         public static IServiceCollection AddSwagger(this IServiceCollection services, IConfiguration configuration)
         {
-            var options = configuration.GetOptions<SwaggerSettings>();
+            var options = configuration
+                .GetSection(nameof(SwaggerSettings))
+                .Get<SwaggerSettings>();
 
             return !options.Enabled ? services : services.AddSwaggerGen();
         }
@@ -18,7 +20,8 @@
             var options = builder
                 .ApplicationServices
                 .GetRequiredService<IConfiguration>()
-                .GetOptions<SwaggerSettings>();
+                .GetSection(nameof(SwaggerSettings))
+                .Get<SwaggerSettings>();
 
             if (!options.Enabled)
                 return builder;

@@ -3,14 +3,11 @@
     <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.5" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.5" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\FeshShop.Common.Authentication\FeshShop.Common.Authentication.csproj" />
+    <ProjectReference Include="..\FeshShop.Common.Guard\FeshShop.Common.Guard.csproj" />
+    <ProjectReference Include="..\FeshShop.Common.Logging\FeshShop.Common.Logging.csproj" />
     <ProjectReference Include="..\FeshShop.Common.Mediator\FeshShop.Common.Mediator.csproj" />
+    <ProjectReference Include="..\FeshShop.Common.Swagger\FeshShop.Common.Swagger.csproj" />
     <ProjectReference Include="..\FeshShop.Common.Types\FeshShop.Common.Types.csproj" />
   </ItemGroup>
 </Project>

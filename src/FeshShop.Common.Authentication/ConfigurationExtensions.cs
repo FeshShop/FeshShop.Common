@@ -7,7 +7,9 @@ public static class ConfigurationExtensions
 {
     public static IServiceCollection AddJwt(this IServiceCollection services, IConfiguration configuration) 
     {
-        var options = configuration.GetOptions<JwtSettings>();
+        var options = configuration
+            .GetSection(nameof(JwtSettings))
+            .Get<JwtSettings>();
 
         services
             .AddSingleton(options)

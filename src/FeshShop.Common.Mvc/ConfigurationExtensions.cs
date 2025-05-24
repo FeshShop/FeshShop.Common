@@ -10,8 +10,8 @@ using System.Reflection;
 
 public static class ConfigurationExtensions
 {
-    public static IServiceCollection AddInitializers(this IServiceCollection services, params Type[] initializers)
-        => initializers == null
+    public static IServiceCollection AddInitializers(this IServiceCollection services, params Type[]? initializers)
+        => initializers is null
             ? services
             : services.AddTransient<IStartupInitializer, StartupInitializer>(c =>
             {

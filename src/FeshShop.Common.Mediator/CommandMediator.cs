@@ -4,7 +4,7 @@ using Contracts.Command;
 using System;
 using System.Threading.Tasks;
 
-public class CommandMediator(IServiceProvider serviceProvider) : ICommandMediator
+internal class CommandMediator(IServiceProvider serviceProvider) : ICommandMediator
 {
     public async Task SendAsync<TModel>(TModel model) where TModel : ICommand
     {
